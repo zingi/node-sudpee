@@ -20,9 +20,9 @@ const argv = yargs.scriptName('sudpee').help()
         describe: 'on which address to listen',
         default: DEFAULT_RECEIVE_ADDRESS
       },
-      date: {
-        alias: 'd',
-        describe: 'print current date on data receive'
+      timestamp: {
+        alias: 't',
+        describe: 'print timestamp on data receive'
       },
       sender: {
         alias: 's',
