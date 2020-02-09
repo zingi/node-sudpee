@@ -15,7 +15,7 @@
 ## Features
 * Sending and receiving unicast/broadcast messages via UDP
 * Automatically stringifies and parses sent and received JSON
-* CLI Tool
+* [CLI Tool](#cli-tool)
 
 ## Basic Example
 
@@ -59,7 +59,7 @@ const sudpee = require('sudpee');
 // > { counter: 3 }
 ```
 
-## Cli Tool
+## CLI Tool
 
 ### Install
 
