@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const yargs = require('yargs')
+const readline = require('readline')
 const sudpee = require('./index')
 
 const DEFAULT_PORT = 2020
@@ -31,6 +32,14 @@ const argv = yargs.scriptName('sudpee').help()
       .boolean(['date'])
   }, receive).command('send', 'send data over UDP', function (yargs) {
     return yargs.options({
+      message: {
+        alias: 'm',
+        describe: 'the message to be sent'
+      },
+      stdin: {
+        alias: 'i',
+        describe: 'send multiple messages from stdin'
+      },
       port: {
         alias: 'p',
         describe: 'to which port to send',
@@ -41,8 +50,8 @@ const argv = yargs.scriptName('sudpee').help()
         describe: 'to which address to send',
         default: DEFAULT_SEND_ADDRESS
       }
-    })
-  })
+    }).boolean(['stdin'])
+  }, send)
   .argv
 
 function receive (argv) {
@@ -53,4 +62,30 @@ function receive (argv) {
 
     console.log(`${preStrings.join(' | ') + (preStrings.length > 0 ? ' | ' : '')}`, msg)
   }, argv.port, argv.address)
+    .then(receiver => {
+      receiver.on('error', err => console.error(err))
+      console.log(`listening on: ${receiver.address}:${receiver.port}`)
+    })
+    .catch(err => console.error(err))
+}
+
+function send (argv) {
+  if (argv.message) {
+    sudpee.send(argv.message, argv.port, argv.address)
+  } else if (argv.stdin) {
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+      prompt: 'message: '
+    })
+
+    rl.prompt()
+    rl.on('line', msg => {
+      msg.trim()
+      sudpee.send(msg, argv.port, argv.address)
+      rl.prompt()
+    })
+  } else {
+    console.error('No message or input provided')
+  }
 }

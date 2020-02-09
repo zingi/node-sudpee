@@ -19,13 +19,12 @@ function createReceiver (address, port, clb) {
 
       const returnedMessage = parseIncomingMessage(msg)
 
-      if (clb) { clb(returnedMessage, info, null) }
-      receiver.emit('message', returnedMessage, info, null)
+      if (clb) { clb(returnedMessage, info) }
+      receiver.emit('message', returnedMessage, info)
     }
 
     function errorCallback (error) {
-      if (clb) { clb(null, null, error) }
-      receiver.emit('message', null, null, error)
+      receiver.emit('error', error)
     }
 
     function listeningCallback () {

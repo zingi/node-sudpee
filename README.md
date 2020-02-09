@@ -1,2 +1,17 @@
-# node-sudpee
-Simple udp for node.
+```
+                  __                           
+                 /\ \                          
+  ____  __  __   \_\ \  _____      __     __   
+ /',__\/\ \/\ \  /'_` \/\ '__`\  /'__`\ /'__`\ 
+/\__, `\ \ \_\ \/\ \L\ \ \ \L\ \/\  __//\  __/ 
+\/\____/\ \____/\ \___,_\ \ ,__/\ \____\ \____\
+ \/___/  \/___/  \/__,_ /\ \ \/  \/____/\/____/
+                          \ \_\                
+                           \/_/                                        
+```
+
+**Simple UDP for node.**
+
+## Features
+* Sending and receiving unicast/broadcast messages via UDP.
+* CLI Tool

@@ -4,9 +4,9 @@
   "description": "Simple udp for node.",
   "main": "index.js",
   "scripts": {
-    "test": "ava",
-    "build": "tsc"
+    "test": "ava"
   },
+  "bin": "./index-cli.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zingi/node-sudpee.git"
@@ -14,7 +14,8 @@
   "keywords": [
     "simple",
     "udp",
-    "node"
+    "node",
+    "cli"
   ],
   "author": "",
   "license": "ISC",
