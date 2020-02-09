@@ -75,6 +75,13 @@ function parseIncomingMessage (message) {
   }
 }
 
+function parseOutgoingMessage (message) {
+  if (typeof message === 'object') {
+    return JSON.stringify(message)
+  }
+  return message
+}
+
 function receive (callback, port = 2020, address = '0.0.0.0') {
   return new Promise((resolve, reject) => {
     createReceiver(address, port, callback).then(receiver => resolve(receiver)).catch(err => reject(err))
@@ -90,7 +97,8 @@ function send (message, port = 2020, address = '255.255.255.255') {
         if (address === '255.255.255.255') {
           client.setBroadcast(true)
         }
-        client.send(message, port, address, (err) => {
+
+        client.send(parseOutgoingMessage(message), port, address, (err) => {
           client.close()
 
           if (err) reject(err)

@@ -15,3 +15,16 @@
 ## Features
 * Sending and receiving unicast/broadcast messages via UDP.
 * CLI Tool
+
+## Basic Example
+
+```javascript
+const sudpee = require('sudpee');
+
+(async () => {
+  await sudpee.receive(msg => console.log(msg))
+  sudpee.send('Hello World')  
+})()
+
+// > Hello World
+```
