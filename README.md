@@ -58,3 +58,27 @@ const sudpee = require('sudpee');
 // > { counter: 2 }
 // > { counter: 3 }
 ```
+
+## Cli Tool
+
+### Install
+
+`npm i sudpee -g`
+
+### Receving Data
+
+`sudpee receive <options>`
+* `-p` port (default: 2020)
+* `-a` address (default: 0.0.0.0)
+* `-t` print timestamp
+* `-s` print sender address
+* `--help` print help
+
+### Sending Data
+
+`sudpee send <options>`
+* `-p` Port (default: 2020)
+* `-a` address (default=broadcast: 255.255.255.255)
+* `-m` the message to be sent
+* `-i` read message from stdin (alternative to `-m`)
+* `--help` print help
