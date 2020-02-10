@@ -14,3 +14,13 @@ test('json', async t => {
     sudpee.send({ value: 3 }, 3001)
   }).then(msg => t.is(msg.value, 3))
 })
+
+test('release port', async t => {
+  const receiver1 = await sudpee.receive(undefined, 3002)
+  await receiver1.finish()
+
+  return new Promise(resolve => {
+    sudpee.receive(msg => resolve(`2: ${msg}`), 3002)
+    sudpee.send('hello udp', 3002)
+  }).then(msg => t.is(msg, '2: hello udp'))
+})

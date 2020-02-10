@@ -27,6 +27,13 @@ function createReceiver (address, port, clb) {
       receiver.emit('error', error)
     }
 
+    function uncaughtExceptionCallback (error) {
+      if (error.errno === 'EADDRINUSE') {
+        reject(error)
+        finishCallback()
+      }
+    }
+
     function listeningCallback () {
       const address = server.address()
       receiver.address = address.address
@@ -39,21 +46,19 @@ function createReceiver (address, port, clb) {
       server.removeListener('message', messageCallback)
       server.removeListener('error', errorCallback)
       server.removeListener('listening', listeningCallback)
-      // TODO: return promisse?
-      server.close()
+      process.removeListener('uncaughtException', uncaughtExceptionCallback)
+      
+      return new Promise(resolve => server.close(() => resolve()))
     }
 
     server.on('message', messageCallback)
     server.on('error', errorCallback)
     server.on('listening', listeningCallback)
+    process.on('uncaughtException', uncaughtExceptionCallback)  
 
     receiver.finish = finishCallback
 
-    try {
-      server.bind(port, address)
-    } catch (error) {
-      reject(error)
-    }
+    server.bind(port, address, () => resolve(receiver))
   })
 }
 
