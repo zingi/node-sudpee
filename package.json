@@ -18,7 +18,7 @@
     "cli"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/zingi/node-sudpee/issues"
   },
