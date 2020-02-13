@@ -18,15 +18,15 @@
 * CLI Tool
 
 ## Documentation
-  * ### [Usage](#usage)
-    * #### [Receving Data](#receiving-data)
-    * #### [Sending Data](#sending-data)
-  * ### Examples
-    * #### [Basic Example](#basic-example)
-    * #### [Advanced Example](#advanced-example)
-  * ### [CLI Tool](#cli-tool)
-    * #### [Receiving Data](#receving-data-with-cli)
-    * #### [Sending Data](#sending-Data-with-cli)
+  * [Usage](#usage)
+    * [Receving Data](#receiving-data)
+    * [Sending Data](#sending-data)
+  * Examples
+    * [Basic Example](#basic-example)
+    * [Advanced Example](#advanced-example)
+  * [CLI Tool](#cli-tool)
+    * [Receiving Data](#receving-data-with-cli)
+    * [Sending Data](#sending-Data-with-cli)
 
 ## Usage
 
