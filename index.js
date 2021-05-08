@@ -1,7 +1,7 @@
-const dgram = require('dgram')
-const events = require('events')
+import dgram from 'node:dgram'
+import EventEmitter from 'node:events'
 
-class Receiver extends events.EventEmitter {}
+class Receiver extends EventEmitter {}
 
 function createReceiver (address, port, clb) {
   return new Promise((resolve, reject) => {
@@ -47,14 +47,14 @@ function createReceiver (address, port, clb) {
       server.removeListener('error', errorCallback)
       server.removeListener('listening', listeningCallback)
       process.removeListener('uncaughtException', uncaughtExceptionCallback)
-      
+
       return new Promise(resolve => server.close(() => resolve()))
     }
 
     server.on('message', messageCallback)
     server.on('error', errorCallback)
     server.on('listening', listeningCallback)
-    process.on('uncaughtException', uncaughtExceptionCallback)  
+    process.on('uncaughtException', uncaughtExceptionCallback)
 
     receiver.finish = finishCallback
 
@@ -116,5 +116,6 @@ function send (message, port = 2020, address = '255.255.255.255') {
   })
 }
 
-module.exports.receive = receive
-module.exports.send = send
+export {
+  receive, send
+}

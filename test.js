@@ -1,5 +1,5 @@
-const test = require('ava')
-const sudpee = require('./index')
+import test from 'ava'
+import * as sudpee from './index.js'
 
 test('send and receive', async t => {
   return new Promise(resolve => {

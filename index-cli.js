@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-const yargs = require('yargs')
-const readline = require('readline')
-const sudpee = require('./index')
+import yargs from 'yargs'
+import readline from 'node:readline'
+import * as sudpee from './index.js'
 
 const DEFAULT_PORT = 2020
 const DEFAULT_RECEIVE_ADDRESS = '0.0.0.0'
