@@ -1,6 +1,6 @@
 {
   "name": "sudpee",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Simple udp for node.",
   "main": "index.js",
   "scripts": {
