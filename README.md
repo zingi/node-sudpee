@@ -64,7 +64,7 @@ await sudpee.send(message, [port], [address])
 ## Basic Example
 
 ```javascript
-const sudpee = require('sudpee');
+import * as sudpee from 'sudpee';
 
 (async () => {
   // receive UDP broadcast on port 3000
@@ -79,7 +79,7 @@ $ Hello World
 
 ## Advanced Example
 ```javascript
-const sudpee = require('sudpee');
+import * as sudpee from 'sudpee';
 
 (async () => {
   const end = 3
